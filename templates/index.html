@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Policy Navigator AI</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <div class="sidebar">
+        <div class="logo-area">
+            <i class="fa-solid fa-scale-balanced fa-xl" style="color: #38bdf8;"></i>
+            <span class="logo-text">Policy Navigator</span>
+        </div>
+
+        <div class="topic-section">
+            <div class="topic-title">🔥 Trending Topics</div>
+            
+            <button class="topic-btn" onclick="quickAsk('Can I return a faulty phone?')">
+                📱 <strong>Consumer Rights</strong><br>Faulty Product Return
+            </button>
+            
+            <button class="topic-btn" onclick="quickAsk('My landlord is not returning my deposit')">
+                🏠 <strong>Tenancy</strong><br>Security Deposit Dispute
+            </button>
+            
+            <button class="topic-btn" onclick="quickAsk('What is the punishment for online harassment?')">
+                💻 <strong>Cyber Safety</strong><br>Online Harassment Laws
+            </button>
+            
+            <button class="topic-btn" onclick="quickAsk('How to file a consumer complaint?')">
+                📝 <strong>Process</strong><br>Filing a Complaint
+            </button>
+        </div>
+
+        <div class="social-footer">
+            <div class="creator-text">
+                Made with ❤️ by <br>
+                <a href="#" class="creator-name">Suchetana Mukherjee</a>
+            </div>
+            <div class="social-icons">
+                <a href="mailto:mukherjeesuchetana514@gmail.com" class="social-icon" title="Email"><i class="fa-solid fa-envelope"></i></a>
+                <a href="https://github.com/mukherjeesuchetana514-maker" target="_blank" class="social-icon" title="GitHub"><i class="fa-brands fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/suchetana-mukherjee-5a7873366/" target="_blank" class="social-icon" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="https://www.instagram.com/iam_suchetana/?__pwa=1#" target="_blank" class="social-icon" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <div class="navbar">
+            <div style="font-weight: 600; color: #1e293b;">
+                <i class="fa-solid fa-shield-halved"></i> AI Policy Analyst
+            </div>
+            <div class="nav-links">
+                <button onclick="openModal('about')" class="nav-btn">
+                    <i class="fa-solid fa-circle-info"></i> About Tool
+                </button>
+                <button onclick="openModal('help')" class="nav-btn emergency">
+                    <i class="fa-solid fa-phone-volume"></i> Emergency Help
+                </button>
+            </div>
+        </div>
+
+        <div class="chat-container">
+            <div class="chat-box" id="chat-box">
+                <div class="message bot-message">
+                    <strong>Hello!</strong> 👋 <br>
+                    I am your AI Policy Analyst. Select a topic from the sidebar or ask me anything about <strong>BNS, Consumer Act, or Tenancy Laws.</strong>
+                </div>
+            </div>
+
+            <div class="input-area">
+                <select id="mode-selector" class="mode-select">
+                    <option value="standard">⚖️ Standard Search</option>
+                    <option value="plain_language">👶 Plain Language</option>
+                    <option value="impact">📊 Impact Analysis</option>
+                </select>
+                <input type="text" id="user-input" class="chat-input" 
+                       placeholder="e.g., Analyze the critical impact of tenant eviction laws..." 
+                       onkeypress="handleEnter(event)">
+                <button onclick="sendMessage()" class="send-btn">
+                    <i class="fa-solid fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-about" class="modal-overlay">
+        <div class="modal-card">
+            <div class="modal-header">
+                <h2>ℹ️ About Policy Navigator</h2>
+            </div>
+            <div class="modal-body">
+                <p><strong>Mission:</strong> To democratize legal knowledge for every citizen.</p>
+                <p>This tool uses <strong>GenAI & Vector Search</strong> to analyze:</p>
+                <ul style="background: #f1f5f9; padding: 15px 30px; border-radius: 10px;">
+                    <li>📜 The Consumer Protection Act</li>
+                    <li>🏠 The Model Tenancy Act</li>
+                    <li>⚖️ The Bharatiya Nyaya Sanhita (BNS)</li>
+                </ul>
+                <button onclick="closeModal('about')" style="width:100%; padding:10px; background:#4f46e5; color:white; border:none; border-radius:8px; cursor:pointer; margin-top:10px;">Got it!</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-help" class="modal-overlay">
+        <div class="modal-card">
+            <div class="modal-header" style="background: linear-gradient(90deg, #ef4444, #f97316);">
+                <h2>🚨 Critical Helplines</h2>
+            </div>
+            <div class="modal-body">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                    <div style="background:#fee2e2; padding:10px; border-radius:8px; color:#b91c1c;">👮‍♂️ <strong>Police</strong><br>Dial 112</div>
+                    <div style="background:#dbeafe; padding:10px; border-radius:8px; color:#1d4ed8;">💻 <strong>Cyber Crime</strong><br>Dial 1930</div>
+                    <div style="background:#fce7f3; padding:10px; border-radius:8px; color:#be185d;">👩 <strong>Women safety</strong><br>Dial 1091</div>
+                    <div style="background:#d1fae5; padding:10px; border-radius:8px; color:#047857;">🛒 <strong>Consumer rights</strong><br>1800-11-4000</div>
+                </div>
+                
+                <div style="margin-top: 20px;">
+                    <strong>🏠 File RERA Complaint:</strong>
+                    <select onchange="if(this.value) window.open(this.value, '_blank')" style="width: 100%; padding: 8px; margin-top: 5px; border: 1px solid #ccc; border-radius: 5px;">
+                        <option value="">▼ Select Your State</option>
+                        <option value="https://rera.wb.gov.in/">West Bengal (WB RERA)</option>
+                        <option value="https://maharera.mahaonline.gov.in/">Maharashtra (MahaRERA)</option>
+                        <option value="https://rera.karnataka.gov.in/">Karnataka (RERA-K)</option>
+                        <option value="https://rera.delhi.gov.in/">Delhi (RERA Delhi)</option>
+                        <option value="https://www.up-rera.in/">Uttar Pradesh (UP RERA)</option>
+                        <option value="https://www.tnrera.in/">Tamil Nadu (TNRERA)</option>
+                        <option value="https://gujrera.gujarat.gov.in/">Gujarat (GujRERA)</option>
+                        <option value="https://rera.rajasthan.gov.in/">Rajasthan (RajRERA)</option>
+                    </select>
+                </div>
+                <button onclick="closeModal('help')" style="width:100%; padding:10px; background:#334155; color:white; border:none; border-radius:8px; cursor:pointer; margin-top:20px;">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Modal Logic
+        function openModal(type) {
+            document.getElementById('modal-' + type).style.display = 'flex';
+        }
+        function closeModal(type) {
+            document.getElementById('modal-' + type).style.display = 'none';
+        }
+
+        // Quick Ask Function (For Sidebar Buttons)
+        function quickAsk(text) {
+            document.getElementById('user-input').value = text;
+            sendMessage();
+        }
+
+        // --- EXISTING CHAT LOGIC ---
+        let lastQuery = "";
+
+        async function sendMessage() {
+            let inputField = document.getElementById("user-input");
+            let chatBox = document.getElementById("chat-box");
+            let modeSelect = document.getElementById("mode-selector");
+            
+            let userText = inputField.value;
+            let selectedMode = modeSelect.value;
+            lastQuery = userText;
+
+            if (userText.trim() === "") return;
+
+            // 1. User Message
+            chatBox.innerHTML += `<div class="message user-message">${userText}</div>`;
+            inputField.value = "";
+            chatBox.scrollTop = chatBox.scrollHeight;
+
+            // 2. Loading
+            let loadingId = "loading-" + Date.now();
+            chatBox.innerHTML += `<div class="message bot-message" id="${loadingId}"><i class="fa-solid fa-spinner fa-spin"></i> Analyzing policies...</div>`;
+            chatBox.scrollTop = chatBox.scrollHeight;
+
+            // 3. Backend Call
+            try {
+                let response = await fetch("/get_response", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ query: userText, mode: selectedMode })
+                });
+                let data = await response.json();
+                
+                // 4. Update Answer
+                let formattedAnswer = data.answer.replace(/\n/g, "<br>");
+                let voteHtml = `
+                    <div style="margin-top:10px; font-size:12px; color:#64748b;">
+                        Was this helpful? 
+                        <span onclick="sendVote('up', this)" style="cursor:pointer; margin-left:10px;">👍 Yes</span>
+                        <span onclick="sendVote('down', this)" style="cursor:pointer; margin-left:10px;">👎 No</span>
+                    </div>`;
+                
+                document.getElementById(loadingId).innerHTML = formattedAnswer + voteHtml;
+                chatBox.scrollTop = chatBox.scrollHeight;
+                
+            } catch (error) {
+                document.getElementById(loadingId).innerHTML = "❌ <span style='color:red'>Connection Error. Check Python Console.</span>";
+            }
+        }
+
+        async function sendVote(type, btnElement) {
+            btnElement.style.color = type === 'up' ? '#16a34a' : '#dc2626';
+            btnElement.innerText = type === 'up' ? '👍 Thanks!' : '👎 Noted';
+            await fetch("/vote", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ vote: type, query: lastQuery })
+            });
+        }
+
+        function handleEnter(event) {
+            if (event.key === "Enter") sendMessage();
+        }
+    </script>
+
+</body>
+</html>

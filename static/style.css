@@ -1,0 +1,338 @@
+/* static/style.css - The "Legal Tech V3" Theme */
+
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+/* GLOBAL RESET */
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    background-color: #f8fafc;
+    height: 100vh; /* Full Viewport Height */
+    display: flex;
+    overflow: hidden; /* Prevents double scrollbars */
+}
+
+/* --- 1. THE SIDEBAR (Chat History & Socials) --- */
+.sidebar {
+    width: 260px;
+    background-color: #0f172a; /* Dark Navy */
+    color: #cbd5e1;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    box-shadow: 4px 0 15px rgba(0,0,0,0.1);
+    z-index: 20;
+    flex-shrink: 0; /* Prevents shrinking */
+}
+
+.logo-area {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #334155;
+}
+
+.logo-text {
+    font-size: 18px;
+    font-weight: 600;
+    color: white;
+}
+
+/* Updated Topic/History Section */
+.topic-section, .history-section {
+    flex: 1;
+    overflow-y: auto;
+}
+
+.topic-title, .history-title {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #64748b;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.topic-btn, .history-item {
+    display: block;
+    width: 100%;
+    text-align: left;
+    background: transparent;
+    border: 1px solid #334155; /* Subtle border for topics */
+    color: #94a3b8;
+    padding: 12px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 13px;
+    transition: all 0.2s;
+}
+
+/* Hover effects for sidebar items */
+.topic-btn:hover, .history-item:hover {
+    background: #1e293b;
+    color: #38bdf8;
+    border-color: #38bdf8;
+    transform: translateX(5px);
+}
+
+/* SOCIAL FOOTER */
+.social-footer {
+    border-top: 1px solid #334155;
+    padding-top: 20px;
+    text-align: center;
+}
+
+.creator-text {
+    font-size: 12px;
+    color: #94a3b8;
+    margin-bottom: 10px;
+}
+
+.creator-name {
+    color: #38bdf8; /* Light Blue */
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.social-icon {
+    color: #cbd5e1;
+    font-size: 18px;
+    transition: transform 0.2s, color 0.2s;
+}
+
+.social-icon:hover {
+    transform: translateY(-3px);
+    color: white;
+}
+
+/* --- 2. MAIN CONTENT & NAVBAR --- */
+.main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    height: 100vh; /* Forces full height */
+    position: relative;
+    /* COLORFUL BACKGROUND (Mesh Gradient) */
+    background: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+    background-image: radial-gradient(at 0% 0%, hsla(253,16%,7%,1) 0, transparent 50%), 
+                      radial-gradient(at 50% 0%, hsla(225,39%,30%,1) 0, transparent 50%), 
+                      radial-gradient(at 100% 0%, hsla(339,49%,30%,1) 0, transparent 50%);
+    background-size: 200% 200%;
+    animation: gradientBG 15s ease infinite; 
+}
+
+/* To keep it readable, we put a glass layer on top */
+.glass-overlay {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(255, 255, 255, 0.85); /* 85% White Overlay */
+    backdrop-filter: blur(50px);
+    z-index: 0;
+    pointer-events: none; /* Let clicks pass through */
+}
+
+.navbar {
+    height: 70px;
+    padding: 0 40px;
+    background: rgba(255, 255, 255, 0.6); /* Slightly more transparent */
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    z-index: 10;
+    flex-shrink: 0; /* Prevents navbar from collapsing */
+}
+
+.nav-links {
+    display: flex;
+    gap: 20px;
+}
+
+.nav-btn {
+    background: none;
+    border: none;
+    font-size: 14px;
+    font-weight: 600;
+    color: #334155;
+    cursor: pointer;
+    padding: 8px 16px;
+    border-radius: 20px;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.nav-btn:hover {
+    background: #e2e8f0;
+    color: #0f172a;
+}
+
+.nav-btn.emergency {
+    background: #fee2e2;
+    color: #dc2626;
+}
+.nav-btn.emergency:hover {
+    background: #dc2626;
+    color: white;
+}
+
+/* --- 3. CHAT AREA (The Scrolling Part) --- */
+.chat-container {
+    position: relative;
+    z-index: 10;
+    flex: 1; /* Takes all remaining height */
+    display: flex;
+    flex-direction: column;
+    overflow: hidden; /* Contains the scroll area */
+    max-width: 900px;
+    margin: 0 auto;
+    width: 100%;
+    padding: 20px;
+}
+
+.chat-box {
+    flex: 1;
+    overflow-y: auto; /* ENABLE SCROLLING HERE */
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    scroll-behavior: smooth;
+}
+
+/* Bubbles */
+.message {
+    padding: 15px 20px;
+    border-radius: 18px;
+    font-size: 15px;
+    line-height: 1.6;
+    max-width: 80%;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+.bot-message {
+    background: white;
+    border-left: 4px solid #6366f1; /* Indigo Accent */
+    color: #1e293b;
+    align-self: flex-start;
+}
+.user-message {
+    background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+    color: white;
+    align-self: flex-end;
+}
+
+/* --- 4. INPUT AREA --- */
+.input-area {
+    background: white;
+    padding: 10px;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    margin-top: 10px;
+    border: 1px solid #e2e8f0;
+    flex-shrink: 0; /* Keeps it at bottom */
+}
+
+.mode-select {
+    border: none;
+    background: #f1f5f9;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 13px;
+    color: #475569;
+    cursor: pointer;
+    margin-right: 10px;
+    font-weight: 600;
+}
+
+.chat-input {
+    flex: 1;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    padding: 10px;
+}
+
+.send-btn {
+    background: #0f172a;
+    color: white;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.2s;
+}
+.send-btn:hover { background: #334155; }
+
+/* --- 5. MODALS (Colorful & Dynamic) --- */
+.modal-overlay {
+    display: none;
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(15, 23, 42, 0.6);
+    backdrop-filter: blur(5px);
+    z-index: 100;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-card {
+    background: white;
+    width: 500px;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+    animation: slideUp 0.3s ease;
+}
+
+.modal-header {
+    background: linear-gradient(90deg, #4f46e5, #ec4899);
+    padding: 20px;
+    color: white;
+    text-align: center;
+}
+
+.modal-body {
+    padding: 30px;
+    color: #334155;
+    line-height: 1.8;
+}
+
+@keyframes slideUp {
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* On screens smaller than 600px (phones) */
+@media only screen and (max-width: 600px) {
+  .sidebar {
+    display: none; /* Hide sidebar on phone to give space to chat */
+  }
+  .chat-container {
+    width: 100%; /* Chat takes full width */
+  }
+}
