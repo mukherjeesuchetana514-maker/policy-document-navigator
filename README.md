@@ -1,4 +1,4 @@
-# 📜 Policy Navigator
+# 📜 Policy Document Navigator
 
 **An AI-powered legal assistant that simplifies complex policy documents using RAG (Retrieval-Augmented Generation) and Google Gemini.**
 
@@ -8,8 +8,8 @@
 - **Live Site:** [Link goes here]
 - **Demo Video:** [Link goes here]
 
-### 📸 Screenshots
-![Home Screen Screenshot](path/to/home-screen-screenshot.png)
+### 📸 Screenshot
+![Screenshot](Policy-document-navigator-pic.png)
 *Above: The main chat interface where users interact with legal documents.*
 
 ---
