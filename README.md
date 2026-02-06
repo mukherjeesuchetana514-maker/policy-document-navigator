@@ -27,7 +27,7 @@ It allows users to interact with specific legal documents (like the *Bharatiya N
 * **📱 Responsive Design:** Fully optimized chat interface for both desktop and mobile users.
 * **⚡ Real-time Citations:** (Optional) Can refer to specific sections/articles.
 
-
+---
 
 ## 🛠️ Tech Stack
 
@@ -51,7 +51,7 @@ It allows users to interact with specific legal documents (like the *Bharatiya N
 3.  **Retrieval:** When a user asks a question, the system searches ChromaDB for the most relevant text chunks.
 4.  **Generation:** The relevant chunks + the user's question are sent to **Gemini**, which generates a precise answer based *only* on the provided context.
 
-
+---
 
 ## 💻 Local Installation Guide
 
@@ -106,6 +106,8 @@ python app.py
 
 * Open your browser and navigate to: http://127.0.0.1:5000
 
+---
+
 ### 📂 Project Structure
 ```Plaintext
 policy-navigator/
@@ -121,12 +123,16 @@ policy-navigator/
 ├── requirements.txt       # Project dependencies
 └── .env                   # API Keys (Not uploaded to GitHub)
 ```
+---
+
 ### 🔮 Future Scope
 * Upload Feature: Allow users to upload their own PDFs to chat with.
 
 * Multi-Language Support: Support for Indian regional languages using Gemini's translation capabilities.
 
 * Voice Interface: Voice-to-text integration for easier accessibility.
+
+---
 
 ### 👤 Author
 Suchetana Mukherjee
