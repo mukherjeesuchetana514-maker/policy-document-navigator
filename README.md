@@ -5,8 +5,8 @@
 ---
 
 ## 🚀 Live Demo & MVP
-- **Live Site:** [Link goes here]
-- **Demo Video:** [Link goes here]
+- **Live Site:** [[Policy_document_Navigator.com](https://huggingface.co/spaces/iamsuchetana01/Policy-document-Navigator)]
+- **Demo Video:** [[Policy_document_Navigator_video](https://www.youtube.com/watch?v=6UxSFcYDNQQ)]
 
 ### 📸 Screenshot
 ![Screenshot](Policy-document-navigator-pic.png)
@@ -27,10 +27,7 @@ It allows users to interact with specific legal documents (like the *Bharatiya N
 * **📱 Responsive Design:** Fully optimized chat interface for both desktop and mobile users.
 * **⚡ Real-time Citations:** (Optional) Can refer to specific sections/articles.
 
-![Mobile View Screenshot](path/to/mobile-view-screenshot.png)
-*Above: Fully responsive design for mobile users.*
 
----
 
 ## 🛠️ Tech Stack
 
