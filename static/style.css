@@ -336,3 +336,35 @@ body {
     width: 100%; /* Chat takes full width */
   }
 }
+
+/* --- MOBILE OPTIMIZATIONS --- */
+@media (max-width: 600px) {
+    /* Make the bottom input area stack vertically */
+    .chat-input-container {
+        flex-direction: column;
+        height: auto;
+        padding: 15px;
+        border-radius: 20px 20px 0 0;
+    }
+
+    /* Make the dropdown menu full width */
+    #search-type {
+        width: 100%;
+        margin-bottom: 10px;
+        border-right: none;
+        border-bottom: 1px solid #eee;
+        border-radius: 8px;
+    }
+
+    /* Make the text input full width */
+    #user-input {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    /* Adjust the chat bubbles to use more screen space */
+    .chat-message {
+        max-width: 90%;
+        font-size: 14px;
+    }
+}
