@@ -51,10 +51,7 @@ It allows users to interact with specific legal documents (like the *Bharatiya N
 3.  **Retrieval:** When a user asks a question, the system searches ChromaDB for the most relevant text chunks.
 4.  **Generation:** The relevant chunks + the user's question are sent to **Gemini**, which generates a precise answer based *only* on the provided context.
 
-![Architecture Diagram](path/to/architecture-diagram.png)
-*Above: High-level workflow of the RAG system.*
 
----
 
 ## 💻 Local Installation Guide
 
